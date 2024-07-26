@@ -1,0 +1,5 @@
+package com.tamilskill.controller;
+
+public class AuthController {
+
+}

@@ -1,0 +1,5 @@
+package com.tamilskill.playload.response;
+
+public class JwtResponse {
+
+}

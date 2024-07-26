@@ -1,0 +1,6 @@
+package com.tamilskill.model;
+
+public enum ERole {
+    
+}
+

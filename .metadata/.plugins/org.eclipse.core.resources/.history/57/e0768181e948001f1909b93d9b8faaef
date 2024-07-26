@@ -1,0 +1,5 @@
+package com.tamilskill.security;
+
+public class WebSecurityConfig {
+
+}

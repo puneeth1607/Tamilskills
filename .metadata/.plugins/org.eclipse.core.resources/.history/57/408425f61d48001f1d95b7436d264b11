@@ -1,0 +1,39 @@
+package com.tamilskill.security.jwt;
+
+import java.security.Key;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoder;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
+
+
+@Component
+public class Utils {
+
+	private static final Logger logger = LoggerFactory.getLogger(Utils.class);
+	
+	@Value("${tamilskill.app.jwtSecret")
+	private String jwtSecret;
+	
+	@Value("${tamilskill.app.jwtExprationMs")
+	private int jwtExprationMs;
+	
+	public Key key() {
+		return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
+	}
+	
+	public boolean validateJwtToken(String authToken) {
+	 
+		try {
+			Jwts.parserBuilder().setSigningKey(key()).build().parse(authToken);
+		}
+	}
+	
+}
+
